@@ -16,9 +16,10 @@
 
 body {
   background: #004d4d;
-  display: grid;
-  place-items: center;
-  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 h1 {
@@ -26,10 +27,10 @@ h1 {
 }
 
 .container {
-  width: 90%;
-  max-width: 420px;
+  margin-block: 1.5rem;
+  width: min(480px, 90%);
   background: #fff;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25);
   display: grid;
@@ -37,8 +38,12 @@ h1 {
 }
 
 .calculator {
-  display: grid;
-  gap: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.calculator > *:not(:last-child) {
+  margin-bottom: 1rem;
 }
 
 .calculator div {
@@ -48,12 +53,12 @@ h1 {
 }
 
 .calculator label {
-  flex: 0 1 120px;
+  flex: 0 0 120px;
   font-weight: 600;
 }
 
 .calculator input {
-  flex: 1;
+  width: 100%;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 10px;
@@ -72,6 +77,8 @@ h1 {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 1px;
+  transition: 0.3s;
+  font-size: 0.875rem;
 }
 
 .calculator button[type="reset"] {
@@ -109,6 +116,35 @@ h1 {
 .bmi-scale h4 {
   font-size: 0.75rem;
   color: slategray;
+}
+
+@media (max-width: 480px) {
+  .bmi-scale {
+    flex-direction: column;
+  }
+  .bmi-scale div {
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-top: 1px solid #eee;
+    border-right: 1px solid #eee;
+    border-left: 5px solid var(--color);
+  }
+
+  .bmi-scale div:last-child {
+    border-bottom: 1px solid #eee;
+  }
+
+  .bmi-scale h4 {
+    width: 120px;
+    text-align: start;
+  }
+
+  .bmi-scale p {
+    font-size: 0.875rem;
+    margin-left: auto;
+  }
 }
 
 .underweight {
